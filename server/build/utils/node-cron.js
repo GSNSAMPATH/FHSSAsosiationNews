@@ -41,7 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.startCron = void 0;
 var node_cron_1 = __importDefault(require("node-cron"));
-var newsController_1 = require("../controllers/newsController");
+// import { deleteOldNews } from '../controllers/newsController';
 var postController_1 = require("../controllers/postController");
 // Schedule to run every 10 minutes
 var startCron = function () {
@@ -51,20 +51,19 @@ var startCron = function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     console.log('Cron job executed at:', new Date());
-                    return [4 /*yield*/, (0, newsController_1.deleteOldNews)()];
-                case 1:
-                    _a.sent();
+                    // await deleteOldNews();
                     return [4 /*yield*/, (0, postController_1.deleteOldPosts)()];
-                case 2:
+                case 1:
+                    // await deleteOldNews();
                     _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
+                    return [3 /*break*/, 3];
+                case 2:
                     error_1 = _a.sent();
                     console.error('Error deleting old news and images:', error_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     }); });
