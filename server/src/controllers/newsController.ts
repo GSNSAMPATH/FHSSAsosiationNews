@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-// import News from '../models/newsModel';
+import News from '../models/newsModel';
 // import cloudinary from 'cloudinary';
 // import multer from 'multer';
 
@@ -10,15 +10,15 @@ import { Request, Response } from 'express';
 // });
 
 export const getNews = async (req: Request, res: Response): Promise<void> => {
-//     try {
-//         const news = await News.find();
-//         res.status(200).json(news);
-//     } catch (error) {
-//         res.status(500).json({ message: 'Server error', error });
-//     }
-// };
+    try {
+        const news = await News.find();
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
+    }
+};
 
-      res.status(200).json('Getting news...');
+
 // const upload = multer({ dest: 'uploads/' });
 
 // const upload = multer({ dest: 'uploads/' });
