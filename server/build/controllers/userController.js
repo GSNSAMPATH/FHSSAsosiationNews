@@ -95,9 +95,6 @@ var loginUser = function (req, res) { return __awaiter(void 0, void 0, void 0, f
             case 0:
                 _b.trys.push([0, 3, , 4]);
                 _a = req.body, email = _a.email, password = _a.password;
-                console.log('Email:', email);
-                console.log('Password:', password);
-                console.log('JWT_SECRET:', process.env.JWT_SECRET);
                 return [4 /*yield*/, userModel_1.default.findOne({ email: email })];
             case 1:
                 user = _b.sent();
@@ -115,9 +112,6 @@ var loginUser = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                     return [2 /*return*/];
                 }
                 token = jsonwebtoken_1.default.sign({ id: user._id }, "e41a61f62fba0ea39087c995813417332573421223cb8182052c6417a47dc586", { expiresIn: '1h' });
-                console.log('Token generated:', token);
-                console.log('User:', user);
-                console.log('Sucssessful login');
                 res.status(200).json({ token: token, user: user, message: 'Sucssessful login' });
                 return [3 /*break*/, 4];
             case 3:
