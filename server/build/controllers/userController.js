@@ -35,54 +35,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerUser = void 0;
-var userModel_1 = __importDefault(require("../models/userModel"));
-var bcrypt_1 = __importDefault(require("bcrypt"));
+// import User from '../models/userModel';
+// import bcrypt from 'bcrypt';
 // Register a new user
 var registerUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name, registationNumber, email, password, image, existingUser, salt, hashedPassword, user, error_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 5, , 6]);
-                _a = req.body, name = _a.name, registationNumber = _a.registationNumber, email = _a.email, password = _a.password, image = _a.image;
-                return [4 /*yield*/, userModel_1.default.findOne({ email: email })];
-            case 1:
-                existingUser = _b.sent();
-                if (existingUser) {
-                    res.status(400).json({ message: 'User already exists' });
-                    return [2 /*return*/];
-                }
-                return [4 /*yield*/, bcrypt_1.default.genSalt(10)];
-            case 2:
-                salt = _b.sent();
-                return [4 /*yield*/, bcrypt_1.default.hash(password, salt)];
-            case 3:
-                hashedPassword = _b.sent();
-                user = new userModel_1.default({
-                    name: name,
-                    registationNumber: registationNumber,
-                    email: email,
-                    password: hashedPassword,
-                    image: image,
-                });
-                // Save the user to the database
-                return [4 /*yield*/, user.save()];
-            case 4:
-                // Save the user to the database
-                _b.sent();
-                res.status(201).json({ message: 'User registered successfully' });
-                return [3 /*break*/, 6];
-            case 5:
-                error_1 = _b.sent();
-                res.status(500).json({ message: 'Server error', error: error_1 });
-                return [3 /*break*/, 6];
-            case 6: return [2 /*return*/];
-        }
+    return __generator(this, function (_a) {
+        res.send('registerUser');
+        return [2 /*return*/];
     });
 }); };
 exports.registerUser = registerUser;
