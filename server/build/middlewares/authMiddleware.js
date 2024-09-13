@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-var JWT_SECRET = "e41a61f62fba0ea39087c995813417332573421223cb8182052c6417a47dc586" || process.env.JWT_SECRET;
+var JWT_SECRET = process.env.JWT_SECRET || "e41a61f62fba0ea39087c995813417332573421223cb8182052c6417a47dc586";
 var authMiddleware = function (req, res, next) {
     var _a;
     var token = (_a = req.header('Authorization')) === null || _a === void 0 ? void 0 : _a.replace('Bearer ', '').trim();
