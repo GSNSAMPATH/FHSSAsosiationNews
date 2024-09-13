@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { IRequest } from '../models/IRequest';
 import User from '../models/userModel';
-// import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 
 
@@ -19,15 +19,14 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
         }
 
         // Hash the password
-        // const salt = await bcrypt.genSalt(10);
-        // const hashedPassword = await bcrypt.hash(password, salt);
-
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
         // Create a new user
         const user = new User({
             name,
             registationNumber,
             email,
-            password,
+            password: hashedPassword,
             image,
         });
 
