@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-// import User from '../models/userModel';
+
+import { IRequest } from '../models/IRequest';
 // import bcrypt from 'bcrypt';
 
 
@@ -41,7 +42,7 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
  };
 
 // Login a user
-// export const loginUser = async (req: Request, res: Response): Promise<void> => {
+ export const loginUser = async (req: Request, res: Response): Promise<void> => {
 //     try {
 //         const { email, password } = req.body;
 
@@ -72,11 +73,11 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
 //         console.error('Error:', error);
 //         res.status(500).json({ message: 'Server error', error });
 //     }
-// };
+ };
 
 
 // Get user profile
-// export const getUserProfile = async (req: IRequest, res: Response): Promise<void> => {
+ export const getUserProfile = async (req: IRequest, res: Response): Promise<void> => {
 //         try {
 //             // Ensure req.user exists and contains the id
 //             if (!req.user || !req.user.id) {
@@ -96,5 +97,5 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
 //         } catch (error) {
 //             res.status(500).json({ message: 'Server error', error });
 //         }
-//     };
+     };
     
