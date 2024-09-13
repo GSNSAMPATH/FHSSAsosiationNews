@@ -5,7 +5,7 @@ import { IRequest } from '../models/IRequest';
 
 
 
-const JWT_SECRET = "e41a61f62fba0ea39087c995813417332573421223cb8182052c6417a47dc586"||process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "e41a61f62fba0ea39087c995813417332573421223cb8182052c6417a47dc586";
 
 const authMiddleware = (req: IRequest, res: Response, next: NextFunction): void => {
     const token = req.header('Authorization')?.replace('Bearer ', '').trim();

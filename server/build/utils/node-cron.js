@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -42,6 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.startCron = void 0;
 var node_cron_1 = __importDefault(require("node-cron"));
 var newsController_1 = require("../controllers/newsController");
+var postController_1 = require("../controllers/postController");
 // Schedule to run every 10 minutes
 var startCron = function () {
     console.log('Starting cron job...');
@@ -50,17 +51,20 @@ var startCron = function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
+                    _a.trys.push([0, 3, , 4]);
                     console.log('Cron job executed at:', new Date());
                     return [4 /*yield*/, (0, newsController_1.deleteOldNews)()];
                 case 1:
                     _a.sent();
-                    return [3 /*break*/, 3];
+                    return [4 /*yield*/, (0, postController_1.deleteOldPosts)()];
                 case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
                     error_1 = _a.sent();
                     console.error('Error deleting old news and images:', error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     }); });
