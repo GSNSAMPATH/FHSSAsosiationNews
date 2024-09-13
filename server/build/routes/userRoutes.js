@@ -5,6 +5,6 @@ var userController_1 = require("../controllers/userController");
 // import authMiddleware from '../middlewares/authMiddleware';
 var router = (0, express_1.Router)();
 router.post('/register', userController_1.registerUser);
-router.post('/login', userController_1.loginUser);
+// router.post('/login', loginUser);
 // router.get('/profile', authMiddleware, getUserProfile);
 exports.default = router;
