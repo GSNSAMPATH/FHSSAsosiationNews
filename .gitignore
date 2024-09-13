@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+/npm-debug.log
+
+# testing
+/coverage
+
+# production
+/build
+/android/app/build
+/ios/Pods
+
+# misc
+.env
+.DS_Store
