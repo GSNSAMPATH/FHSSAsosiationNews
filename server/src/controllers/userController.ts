@@ -43,9 +43,7 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
 export const loginUser = async (req: Request, res: Response): Promise<void> => {
     try {
         const { email, password } = req.body;
-        console.log('Email:', email);
-        console.log('Password:', password);
-        console.log('JWT_SECRET:', process.env.JWT_SECRET);
+
 
 
         // Check if the user exists
@@ -66,9 +64,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
 
         // Generate a JWT token
         const token = jwt.sign({ id: user._id }, "e41a61f62fba0ea39087c995813417332573421223cb8182052c6417a47dc586"!, { expiresIn: '1h' });
-        console.log('Token generated:', token);
-        console.log('User:', user);
-        console.log('Sucssessful login');
+
 
         res.status(200).json({ token, user, message: 'Sucssessful login' });
     } catch (error) {
