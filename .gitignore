@@ -1,14 +1,23 @@
 # dependencies
 /node_modules
-/npm-debug.log
+mobile/fhssNews/node_modules
+server/node_modules
+web/node_modules
+
+mobile/fhssNews/npm-debug.log
+server/npm-debug.log
+web/npm-debug.log
 
 # testing
-/coverage
+mobile/fhssNews/coverage
 
 # production
-/build
-/android/app/build
-/ios/Pods
+mobile/fhssNews/build
+server/build
+web/build
+
+mobile/fhssNews/android/app/build
+mobile/fhssNews/ios/Pods
 
 # misc
 .env
