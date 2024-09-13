@@ -5,7 +5,8 @@ import cors from 'cors';
 import connectDB from './config/db';
 
 import { startCron } from './utils/node-cron';
-import userRoutes from './routes/userRoutes';
+import newsRoutes from './routes/newsRoutes';
+import postRoutes from './routes/postRoutes';
 
 
 
@@ -19,9 +20,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/users', userRoutes);
-// app.use('/api/news', newsRoutes);
-// app.use('/api/posts',postRoutes);
+// app.use('/api/users', userRoutes);
+app.use('/api/news', newsRoutes);
+app.use('/api/posts',postRoutes);
 
 startCron();
 
