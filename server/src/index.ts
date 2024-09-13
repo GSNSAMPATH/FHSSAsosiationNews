@@ -5,9 +5,9 @@ import cors from 'cors';
 import connectDB from './config/db';
 
 import { startCron } from './utils/node-cron';
-// import userRoutes from './routes/userRoutes';
+import userRoutes from './routes/userRoutes';
 import newsRoutes from './routes/newsRoutes';
-// import postRoutes from './routes/postRoutes';
+import postRoutes from './routes/postRoutes';
 
 
 
