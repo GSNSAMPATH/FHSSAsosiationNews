@@ -42,7 +42,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserProfile = exports.loginUser = exports.registerUser = void 0;
 var userModel_1 = __importDefault(require("../models/userModel"));
 var bcrypt_1 = __importDefault(require("bcrypt"));
-var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 // Register a new user
 var registerUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, name, registationNumber, email, password, image, existingUser, salt, hashedPassword, user, error_1;
@@ -89,75 +88,15 @@ var registerUser = function (req, res) { return __awaiter(void 0, void 0, void 0
 exports.registerUser = registerUser;
 // Login a user
 var loginUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, email, password, user, isMatch, token, error_2;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 3, , 4]);
-                _a = req.body, email = _a.email, password = _a.password;
-                console.log('Email:', email);
-                console.log('Password:', password);
-                console.log('JWT_SECRET:', process.env.JWT_SECRET);
-                return [4 /*yield*/, userModel_1.default.findOne({ email: email })];
-            case 1:
-                user = _b.sent();
-                if (!user) {
-                    console.log('User not found');
-                    res.status(400).json({ message: 'Invalid credentials' });
-                    return [2 /*return*/];
-                }
-                return [4 /*yield*/, bcrypt_1.default.compare(password, user.password)];
-            case 2:
-                isMatch = _b.sent();
-                if (!isMatch) {
-                    console.log('Password mismatch');
-                    res.status(400).json({ message: 'Invalid credentials' });
-                    return [2 /*return*/];
-                }
-                token = jsonwebtoken_1.default.sign({ id: user._id }, "e41a61f62fba0ea39087c995813417332573421223cb8182052c6417a47dc586", { expiresIn: '1h' });
-                console.log('Token generated:', token);
-                console.log('User:', user);
-                console.log('Sucssessful login');
-                res.status(200).json({ token: token, user: user, message: 'Sucssessful login' });
-                return [3 /*break*/, 4];
-            case 3:
-                error_2 = _b.sent();
-                console.error('Error:', error_2);
-                res.status(500).json({ message: 'Server error', error: error_2 });
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
+    return __generator(this, function (_a) {
+        return [2 /*return*/];
     });
 }); };
 exports.loginUser = loginUser;
 // Get user profile
 var getUserProfile = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, error_3;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                // Ensure req.user exists and contains the id
-                if (!req.user || !req.user.id) {
-                    res.status(400).json({ message: 'User not authenticated' });
-                    return [2 /*return*/];
-                }
-                return [4 /*yield*/, userModel_1.default.findById(req.user.id).select('-password')];
-            case 1:
-                user = _a.sent();
-                if (!user) {
-                    res.status(404).json({ message: 'User not found' });
-                    return [2 /*return*/];
-                }
-                // Respond with user profile data
-                res.status(200).json(user);
-                return [3 /*break*/, 3];
-            case 2:
-                error_3 = _a.sent();
-                res.status(500).json({ message: 'Server error', error: error_3 });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
+        return [2 /*return*/];
     });
 }); };
 exports.getUserProfile = getUserProfile;

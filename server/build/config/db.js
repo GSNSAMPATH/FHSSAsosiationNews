@@ -45,7 +45,7 @@ var connectDB = function () { return __awaiter(void 0, void 0, void 0, function 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/pitaya';
+                MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://ar102389:oAlMmyROl5BunmgF@fhssasosiation.bbwlv.mongodb.net/?retryWrites=true&w=majority&appName=FHSSAsosiation";
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);

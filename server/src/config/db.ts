@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 
 const connectDB = async (): Promise<void> => {
 
-    const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/pitaya';
+    const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://ar102389:oAlMmyROl5BunmgF@fhssasosiation.bbwlv.mongodb.net/?retryWrites=true&w=majority&appName=FHSSAsosiation"
+    // 'mongodb://localhost:27017/pitaya';
 
     try {
 
