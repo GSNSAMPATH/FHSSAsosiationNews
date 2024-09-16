@@ -47,7 +47,11 @@ const LoginForm: React.FC<loginformProps> = ({ onLogintoSingUp }) => {
                 const userData = docSnap.data();
                 const { AR_Number, username, role, email } = userData;
                 signIn({ AR_Number, username, role, email });
-                alert('Login successful!');
+                Swal.fire({
+                    title: "Success",
+                    text: "Login successful.",
+                    icon: "success",
+                })
                 navigate('/home');
             } else {
                 Swal.fire({
