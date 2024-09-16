@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { auth } from '../Authotication/firebase';
 
 interface User {
+  [x: string]: any;
   name?: string;  // Optional if not provided
   AR_Number: string;
   username: string;
@@ -44,6 +46,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const signOut = () => {
     setUser(null);
     localStorage.removeItem('user');
+    auth.signOut();
   };
 
   return (
