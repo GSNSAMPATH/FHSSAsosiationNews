@@ -15,11 +15,13 @@ export default function Home() {
   })
 
   return (
-    <><Navbar />
+    <>
+    <Navbar />
     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: '20px', padding: '20px' }}>
     
   
-          <Flower />
-      </div></>
+    <Flower />
+    </div>
+    </>
   )
 }
