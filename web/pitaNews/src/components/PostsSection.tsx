@@ -4,7 +4,11 @@ import React from 'react';
 const PostsSection: React.FC = () => {
   return (
     <div className="section">
-      <h2> Posts</h2>
+      <h2> 
+        Posts
+      </h2>
+      <div className="section"><h2>Latest Post</h2>
+      
       <div className="content">
         <div className="large">
           <img
@@ -14,6 +18,7 @@ const PostsSection: React.FC = () => {
             width="600"
           />
         </div>
+        
         <div className="small">
           <img
             alt="Small posts image 1"
@@ -30,13 +35,15 @@ const PostsSection: React.FC = () => {
             width="300"
           />
           </div> 
-          <center><div>
+      </div>
+      </div>
+      <center>
             <a className="button" href="#">
                   More Post
             </a>
-          </div></center>
-      </div>
+          </center>
     </div>
+    
   );
 };
 

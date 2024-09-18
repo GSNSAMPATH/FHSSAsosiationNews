@@ -33,12 +33,7 @@ const NewsSection: React.FC = () => {
                 </div>
               </div>
             </div>
-          <img
-            alt="News image 1"
-            height="200"
-            src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-D1K9MgdWNuyxrc02WSOVGZcp.png"
-            width="300"
-          />
+          
         
         </div>
         <div className="arrow">

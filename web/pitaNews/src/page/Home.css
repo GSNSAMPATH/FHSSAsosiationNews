@@ -12,11 +12,11 @@
   margin-bottom: 20px;
 }
 
-.content {
+/*.content {
   display: flex;
   justify-content: center;
   gap: 20px;
-}
+}*/
 
 .large img {
   width: 100%;
