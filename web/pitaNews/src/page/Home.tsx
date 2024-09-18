@@ -1,4 +1,3 @@
-import React from 'react';
 import { auth } from '../Authotication/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import Flower from '../components/background'
@@ -22,11 +21,10 @@ export default function Home() {
     <div className ="home-container">
 
     <Flower />
-    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: '20px', padding: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', gap: '10px', padding: '20px' }}>
       <UpdatesSection/>
       <NewsSection/>
       <PostsSection/>
-    
     </div>
     </div>
     </>

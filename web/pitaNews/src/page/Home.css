@@ -1,3 +1,8 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
 .section {
   padding: 20px;
   background-color: #f9f9f9;
@@ -11,12 +16,6 @@
   color: #333;
   margin-bottom: 20px;
 }
-
-/*.content {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}*/
 
 .large img {
   width: 100%;
@@ -68,3 +67,100 @@
   height:auto;
   border-radius: 8px;
 }
+
+updates-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.updates-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.updates-section img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+
+/* Header styles */
+header {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Main content area styles */
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns layout in Update section */
+  gap: 20px;
+  padding: 20px;
+}
+
+.main-content .box {
+  background-color: gray;
+  height: 200px; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  display: flex ;
+  gap: 3;
+  flex-direction: column;
+}
+/* News Section Styles */
+.news-section-container{
+  display:flex;
+  flex-direction:row;
+  gap: 20px;
+}
+
+.news-section-container .box {
+  flex: 1; /* This makes the boxes take equal space */
+  background-color: gray;
+  height: 200px; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  /* Why this is not present placeholder boxes in gray color? */
+  background-color: #f1f1f1;
+  display: flex ;
+  gap: 3;
+}
+
+/* Footer styles */
+footer {
+  background-color: #f8f8f8;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+}
+
+footer .label {
+  margin-right: 10px;
+}
+
+footer .down-arrow {
+  cursor: pointer;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('down-arrow-icon.png'); /* Replace with your down arrow icon path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+
