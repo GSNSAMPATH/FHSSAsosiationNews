@@ -50,7 +50,7 @@ const AddNews = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/api/news/addNews', newsData, {
+      const response = await axios.post('https://fhss-asosiation-news.vercel.app/api/news/addNews', newsData, {
         headers: {
           'Content-Type': 'application/json',
         },
