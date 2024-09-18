@@ -31,6 +31,10 @@ const Navbar: React.FC = () => {
   };
 
   const toggleNavbar = () => {
+    // Toggle the isOpen state
+    if (isOpen) {
+      setIsOpen(false);
+    }
     setIsOpen(!isOpen);
   };
 
@@ -115,7 +119,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="header3">
-        <ul className={`link ${isOpen ? 'nav-active' : ''}`}>
+        <ul className={`link ${isOpen ? 'nav-active' : ''}`} >
           <li className={location.pathname === '/home' ? 'active' : ''}>
             <Link to="/home">Home</Link>
           </li>
