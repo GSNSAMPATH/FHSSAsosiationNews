@@ -1,9 +1,16 @@
 import React from 'react';
-
-
 const UpdatesSection: React.FC = () => {
   return (
     <div className="section">
+      <h2>Updates 
+        <i className="fas fa-chevron-down"></i>
+      </h2>
+      <div className="carousel">
+        <div className="arrow">
+          <i className="fas fa-chevron-left"></i>
+        </div>
+
+      </div>
       <h2>Latest Updates</h2>
       <div className="content">
         <div className="large">
