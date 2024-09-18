@@ -11,7 +11,28 @@ const NewsSection: React.FC = () => {
         <div className="arrow">
           <i className="fas fa-chevron-left"></i>
         </div>
-        <div className="items">
+        <div className="items">    
+            <div className="section">
+              <h2>Latest News</h2>
+              <div className="content">
+                <div className="large">
+                  <img
+                    alt="Large news image"
+                    height="400"
+                    src="https://example.com/large-news-image.jpg"
+                    width="600"
+                  />
+                </div>
+                <div className="small">
+                  <img
+                    alt="Small news image 1"
+                    height="200"
+                    src="https://example.com/small-news-image.jpg"
+                    width="200"
+                  />
+                </div>
+              </div>
+            </div>
           <img
             alt="News image 1"
             height="200"
