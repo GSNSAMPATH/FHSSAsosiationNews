@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddPost from '../page/addPost';
 import App from '../App';
 // import Signup from '../page/singnUp';
-// import Welcome from '../page/welcome';
+import Welcome from '../page/welcome';
+
 import Home from '../page/Home';
 
 
@@ -25,6 +26,7 @@ const Router = () => {
 
     <BrowserRouter>
       <Routes>
+      <Route path="/welcome" element={<Welcome />}/>
      
         {/* <Route path="/signin" element={<Login/>} /> */}
         {/* <Route path="/signup" element={<Signup />} /> */}
