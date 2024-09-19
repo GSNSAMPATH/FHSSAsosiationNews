@@ -10,7 +10,7 @@ const Welcome = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/home'); 
-    }, 5000);
+    }, 555000);
 
     return () => clearTimeout(timer);
   }, [navigate]);
@@ -24,49 +24,53 @@ const Welcome = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        position: 'relative',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
+        position: 'relative',
       }}
     >
       
+      {/* University Logo */}
       <img
         src={logo}
         alt="University Logo"
         style={{
           position: 'absolute',
-          top: '20px',
-          right: '20px',
-          width: '80px',
-          height: '80px',
+          top: '3vw',
+          right: '2vw',
+          width: '8vw',
+          height: 'auto',
         }}
       />
 
+      {/* Another Logo */}
       <img
         src={anotherLogo}
         alt="Another Logo"
         style={{
           position: 'absolute',
-          top: '20px',
-          left: '20px',
-          width: '80px',
-          height: '80px',
+          top: '3vw',
+          left: '2vw',
+          width: '8vw',
+          height: 'auto',
         }}
       />
 
+      {/* Welcome Text */}
       <div
         style={{
           textAlign: 'center',
           color: '#fff',
           animation: 'fadeIn 2s ease-out',
+          marginTop: '15vh', // Push text further down
         }}
       >
-        <h1 style={{ fontSize: '6vw', fontWeight: 'bold', margin: '0' }}>Welcome Today!</h1>
-        <h2 style={{ fontSize: '3vw', fontWeight: 'lighter', marginTop: '10px' }}>J’pura Pita News</h2>
+        <h1 style={{ fontSize: '7vw', fontWeight: '500', margin: '0' }}>Welcome Today!</h1>
+        <h2 style={{ fontSize: '4vw', fontWeight: 'lighter', marginTop: '10px' }}>J’pura Pita News</h2>
 
-        {/* Loading dots animation */}
+        {/* Loading Dots */}
         <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
           <div className="dot" />
           <div className="dot" />
@@ -74,7 +78,7 @@ const Welcome = () => {
         </div>
       </div>
 
-      {/* CSS for fade-in animation and dots animation */}
+      {/* CSS for animation and responsiveness */}
       <style>{`
         @keyframes fadeIn {
           0% { opacity: 0; transform: translateY(-20px); }
@@ -88,9 +92,9 @@ const Welcome = () => {
         }
 
         .dot {
-          width: 12px;
-          height: 12px;
-          margin: 0 5px;
+          width: 1.2vw;
+          height: 1.2vw;
+          margin: 0 0.5vw;
           background-color: white;
           border-radius: 50%;
           display: inline-block;
@@ -111,41 +115,39 @@ const Welcome = () => {
 
         @media (max-width: 768px) {
           h1 {
-            font-size: 8vw;
+            font-size: 10vw;
           }
 
           h2 {
-            font-size: 4vw;
-          }
-
-          img {
-            width: 60px;
-            height: 60px;
+            font-size: 6vw;
           }
 
           .dot {
-            width: 10px;
-            height: 10px;
+            width: 2vw;
+            height: 2vw;
+          }
+
+          img {
+            width: 12vw;
           }
         }
 
         @media (max-width: 480px) {
           h1 {
-            font-size: 10vw;
+            font-size: 12vw;
           }
 
           h2 {
-            font-size: 5vw;
-          }
-
-          img {
-            width: 50px;
-            height: 50px;
+            font-size: 8vw;
           }
 
           .dot {
-            width: 8px;
-            height: 8px;
+            width: 3vw;
+            height: 3vw;
+          }
+
+          img {
+            width: 15vw;
           }
         }
       `}</style>
