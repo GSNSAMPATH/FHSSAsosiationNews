@@ -1,16 +1,16 @@
 import pitaLogo from '../Logo/pitaLogo.png'
 
-const PitaLogo = () => {
+const PitaLogo = (props: React.ComponentProps<'img'>) => {
     return (
-        <img src={pitaLogo} style={{ width: '40px', height: '40px' }} />
+        <img src={pitaLogo} style={{ ...props.style }} {...props} />
     )
 }
 
 import univercityLogo from '../Logo/SjpLogo.png'
 
-const UnivercityLogo = () => {
+const UnivercityLogo = (props: React.ComponentProps<'img'>) => {
     return (
-        <img src={univercityLogo} style={{ width: '40px', height: '40px' }} />
+        <img src={univercityLogo} style={{  ...props.style }} {...props} />
     )
 }
 

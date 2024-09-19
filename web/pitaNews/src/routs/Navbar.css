@@ -52,6 +52,16 @@
 
 }
 
+.navbar2-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px;
+  gap: 150px;
+  margin-right: 10px;
+}
+
 .logo {
   font-size: 20px;
   font-weight: bold;
@@ -76,7 +86,8 @@
 .univercity {
   text-align: left;
   font-size: 10px;
-  padding: 1px;
+  padding: 0px;
+  width: 900px;
 
 
 }
@@ -156,7 +167,7 @@ ul {
   width: 25px;
   height: 3px;
   background-color: white;
-  margin: 5px;
+  margin: 3px;
   transition: all 0.3s ease;
 }
 
@@ -214,11 +225,56 @@ ul {
   color: #000;
 }
 
+.universityLogo2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 5px;
+
+}
+
+.pitalogo { 
+  width: 40px;
+  height: 40px;
+}
+
+.reloadIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+
+}
+
 /* For small screens */
-@media (max-width: 768px) {
+@media (max-width: 1058px) {
   .navbar {
       padding-left: 20px;
       padding-right: 20px;
+      height: 100px;
+      width: 100%;
+      border-radius: 0;
+
+
+  }
+
+  .link li.active {
+    background-color: #00000039;
+    width: 400px;
+    border-bottom: none;
+    border-radius: 1px;
+    padding: 10px;
+  }
+
+
+  .navebarhed {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px;
   }
 
   .navbar2 {
@@ -228,9 +284,27 @@ ul {
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 4%;
+      padding: 1;
+
+      
+  }
+
+  .navbar2-div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 20px;
+  }
+
+  .logo-img {
+      width: 5px;
+      height: 5px;
   }
   
+  .universityLogo {
+      display: none;
+  }
 
   .link {
       display: none;
@@ -247,17 +321,32 @@ ul {
 
   .link.nav-active {
       display: flex;
+      background-color: #0c0c0c;
+      align-items: center;
+      justify-content: center;
+      
+  
+
+
   }
+ 
 
   .link li {
-      margin: 20px 0;
+     margin-top: -100px;
+     padding: 20px;
+     font-size: 20px;
+     
   }
 
   .burger {
       display: flex;
       margin-top: 20px;
       margin-left: 0px;
+      margin-right: 0px;
       padding: 0;
+      cursor: pointer;
+     
+      
   }
 
   .profile {
@@ -266,16 +355,83 @@ ul {
 
   .logo {
       font-size: 16px;
+      margin-left: -70px;
   } 
 
   .univercity {
-      font-size: 8px;
+      font-size: 5px;
+      width: 900px;
+  }
+
+  .universityLogo2 {
+      gap: 10px;
+      margin-left: -20px;
+      
   }
 
   .header3 {
-      display: none;
+     background-color: #33333300;
+}
+
+.pitalogo {
+    width: 30px;
+    height: 30px;
+
+
+} 
+
+  .burger {
+    position: relative;
+    display: flex;
+    margin-left: -20px;
+    margin-top: 40px;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .burger span {
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 4px;
+    transition: all 0.5s;
+  }
+
+  .header3 ul.nav-active {
+    /* Show navbar links when active on mobile */
+    flex-direction: column;
+    position: absolute;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    align-items: flex-start;
+    margin-left: 200px;
+    margin-top:-60px; ;
+
+    
+    background-color: #0a0a0aae;
+  
+    
+  }
+
+  .header3 ul li {
+    padding: 1px;
+    text-align: left;
+    font-size: 1px;
+    margin-top: 10px;
+
+
+  }
+
+  .reloadIcon {
+    display: none;
+  }
+
 }
 
 
-}
   

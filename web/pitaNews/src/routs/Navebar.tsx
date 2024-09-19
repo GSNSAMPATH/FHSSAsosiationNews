@@ -31,11 +31,8 @@ const Navbar: React.FC = () => {
   };
 
   const toggleNavbar = () => {
-    // Toggle the isOpen state
-    if (isOpen) {
-      setIsOpen(false);
-    }
     setIsOpen(!isOpen);
+    console.log(isOpen);
   };
 
   const toggleProfileBox = () => {
@@ -86,29 +83,23 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="navbar2">
+        <div className="navbar2-div">
         <div style={{ marginTop: '14px' }}>
           <h1 className="logo">WEEK</h1>
           <h1 className="logo">NEWS</h1>
         </div>
 
         <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '20px',
-            padding: '20px',
-            marginTop: '5px',
-          }}
+          className="universityLogo2"
         >
-          <PitaLogo />
-          <UnivercityLogo />
+          <PitaLogo className='pitalogo' />
+          <UnivercityLogo className='pitalogo' />
           <h2 className="univercity">
             Student Association <br />
             Faculty of Humanities and Social Sciences <br />
             University Of Sri Jayawardanapura
           </h2>
+          </div>
         </div>
       </div>
 
@@ -142,7 +133,7 @@ const Navbar: React.FC = () => {
           width="23"
           height="23"
           onClick={handleReload}
-          style={{ cursor: 'pointer', fill: 'white' }}
+          className='reloadIcon'
         />
         
       </div>
