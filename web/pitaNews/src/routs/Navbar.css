@@ -231,8 +231,9 @@ ul {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 20px;
+  padding-right: 40px;
   margin-top: 5px;
+  margin-left: 180px;
 
 }
 
@@ -249,7 +250,7 @@ ul {
 }
 
 /* For small screens */
-@media (max-width: 1058px) {
+@media (max-width: 1020px) {
   .navbar {
       padding-left: 20px;
       padding-right: 20px;
@@ -262,7 +263,7 @@ ul {
 
   .link li.active {
     background-color: #00000039;
-    width: 400px;
+    width: 90% ;
     border-bottom: none;
     border-radius: 1px;
     padding: 10px;
@@ -411,6 +412,7 @@ ul {
     align-items: flex-start;
     margin-left: 200px;
     margin-top:-60px; ;
+    align-self: flex-end;
 
     
     background-color: #0a0a0aae;

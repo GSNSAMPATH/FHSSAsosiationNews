@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../style/AddNews.css'
+import Swal from 'sweetalert2';
 
 const AddPost = () => {
   const [title, setTitle] = useState<string>('');
@@ -36,7 +38,11 @@ const AddPost = () => {
 
     const uploadResult = await uploadImageToCloudinary();
     if (!uploadResult) {
-      setMessage('Image upload failed.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to upload image.',
+      })
       return;
     }
 
@@ -57,7 +63,12 @@ const AddPost = () => {
       });
 
       if (response.status === 201) {
-        alert('post added successfully!');
+        Swal.fire({
+          icon: 'success',
+          title: 'News added successfully!',
+          showConfirmButton: false,
+          timer: 1500
+        })
     
         setTitle("");
         setContent("");    
@@ -65,49 +76,55 @@ const AddPost = () => {
    
         
       } else {
-        setMessage('Failed to add post.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to add news.',
+        })
       }
     } catch (error) {
       console.error('Error adding post:', error);
-      setMessage('An error occurred while adding the Post.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to add news.',
+      })
     }
   };
 
   return (
 
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', alignContent: 'center',backgroundColor: 'rgba(107, 100, 104, 0.38)', padding: '20px' }}>
-      <h1 style={{ textAlign: 'center' }}>Add Post</h1>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ marginBottom: '10px', width: '400px',justifyItems: 'center' }}>
-          <label style={{ marginBottom: '10px'}}>Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            style={{ width: '400px', marginBottom: '10px' }}
-          />
-        </div>
-        <div style={{ marginBottom: '10px', width: '400px'}}>
-          <label>Content:</label>
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-            style={{ width: '400px', marginBottom: '10px', height: '100px' }}
-          />
-        </div>
-        <div>
-          <label>Image:</label>
-          <input type="file" accept="image/*" onChange={handleFileChange} style={{ marginBottom: '10px' }} />
-          {image && <img src={URL.createObjectURL(image)} alt="Uploaded image" width="300" style={{ marginBottom: '10px' }} />}
-        </div>
-        <button type="submit" style={{ width: '300px' }} onClick={handleSubmit}>
-          Submit
-        </button>
-      </form>
-      {message && <p style={{ textAlign: 'center' }}>{message}</p>}
-    </div>
+    <div className="add-news-container"> {/* Reusing the same CSS class */}
+    <h1 className="add-news-title">Add Post</h1>
+    <form onSubmit={handleSubmit} className="add-news-form">
+      <div className="add-news-field">
+        <label className='add-news-label'>Title:</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+          className="add-news-input"
+        />
+      </div>
+      <div className="add-news-field">
+        <label className='add-news-label'>Content:</label>
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+          className="add-news-textarea"
+        />
+      </div>
+      <div className="add-news-field">
+        <label className='add-news-label'>Image:</label>
+        <input type="file" accept="image/*" onChange={handleFileChange}  className="add-news-image-input"/>
+        {image && <img src={URL.createObjectURL(image)} alt="Uploaded" className="add-news-image-preview" />}
+      </div>
+      <button type="submit" className="add-news-button">Submit</button>
+    </form>
+    {message && <p className="add-news-message">{message}</p>}
+  </div>
 
   );
 };

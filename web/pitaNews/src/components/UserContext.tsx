@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { auth } from '../Authotication/firebase';
 
-interface User {
+export interface User {
   [x: string]: any;
   name?: string;  // Optional if not provided
   AR_Number: string;
