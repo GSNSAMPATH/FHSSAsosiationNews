@@ -6,6 +6,7 @@ import { PitaLogo, UnivercityLogo } from '../assets/Logo/Logo';
 import CustomIcon from '../assets/updated_reload_preset_white.svg';
 import ProfileModal from '../components/Profile';
 import SettingsModal from '../components/setting';
+import { Navediv } from '../components/navediv';
 
 const Navbar: React.FC = () => {
   const { user , signIn, signOut } = useUser();
@@ -83,7 +84,8 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="navbar2">
-        <div className="navbar2-div">
+        <Navediv />
+        {/* <div className="navbar2-div">
         <div style={{ marginTop: '14px' }}>
           <h1 className="logo">WEEK</h1>
           <h1 className="logo">NEWS</h1>
@@ -100,7 +102,7 @@ const Navbar: React.FC = () => {
             University Of Sri Jayawardanapura
           </h2>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="burger" onClick={toggleNavbar}>
