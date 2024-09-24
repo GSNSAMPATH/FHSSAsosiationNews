@@ -26,7 +26,8 @@ const Router = () => {
 
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Welcome />}/>
+      <Route path="/" element={<App />}/>
+      {/* <Route path="/" element={<Welcome />}/> */}
      
         {/* <Route path="/signin" element={<Login/>} /> */}
         {/* <Route path="/signup" element={<Signup />} /> */}
