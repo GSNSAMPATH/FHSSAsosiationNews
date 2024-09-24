@@ -8,6 +8,7 @@ import { startCron } from './utils/node-cron';
 import newsRoutes from './routes/newsRoutes';
 import postRoutes from './routes/postRoutes';
 import userRoutes from './routes/userRoutes';
+import kuppiRoutes from './routes/kuppiRoutes';
 
 
 
@@ -24,6 +25,7 @@ app.use(express.json());
 // app.use('/api/users', userRoutes);
 app.use('/api/news', newsRoutes);
 app.use('/api/posts',postRoutes);
+app.use('/api/kuppi',kuppiRoutes);
 
 startCron();
 

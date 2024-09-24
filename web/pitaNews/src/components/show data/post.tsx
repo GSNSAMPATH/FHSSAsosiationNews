@@ -10,8 +10,8 @@ const NewsList = ({ posts }: { posts: PostData[] }) => {
         {posts.map((newsItem) => (
           <div key={newsItem._id} className="news">
             <img src={newsItem.imageUrl} alt={newsItem.title} className="news-image" />
-            <h3>{newsItem.title}</h3>
-            <p>{newsItem.content}</p>
+            <h3 style={{color:"black"}}>{newsItem.title}//</h3>
+            {/* <p>{newsItem.content}</p> */}
           </div>
         ))}
       </div>

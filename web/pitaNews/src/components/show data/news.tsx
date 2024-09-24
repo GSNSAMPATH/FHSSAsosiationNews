@@ -9,8 +9,8 @@ const NewsList = ({ news }: { news: NewsData[] }) => {
         {news.map((newsItem) => (
           <div key={newsItem._id} className='news scroll-item'>
             <img src={newsItem.imageUrl} alt={newsItem.title} className="news-image" />
-            <h3>{newsItem.title}</h3>
-            <p>{newsItem.content}</p>
+            <h3 style={{color:"black"}}>{newsItem.title}</h3>
+            {/* <p>{newsItem.content}</p> */}
           </div>
         ))}
       </div>
