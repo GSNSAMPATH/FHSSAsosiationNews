@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../routs/Navebar';
 
 const Kuppi: React.FC = () => {
+  const [activeSubject, setActiveSubject] = useState<string | null>(null);
+
   const departments = [
     { name: 'Department of Anthropology', subjects: ['Anthropology'] },
     { name: 'Department of Criminology and Criminal Justice', subjects: ['Criminology and Criminal Justice'] },
@@ -17,9 +19,15 @@ const Kuppi: React.FC = () => {
     { name: 'Department of Philosophy and Psychology', subjects: ['Philosophy', 'Psychology'] },
     { name: 'Department of Political Science', subjects: ['Political Science'] },
     { name: 'Department of Sinhala and Mass Communication', subjects: ['Sinhala', 'Mass Communication'] },
-    { name: 'Department of Social Statistics', subjects: [] },
+    { name: 'Department of Social Statistics', subjects: ['Statistics'] },
     { name: 'Department of Sociology', subjects: ['Sociology'] }
   ];
+
+  const handleSubjectClick = (subject: string) => {
+    setActiveSubject((prevSubject) => (prevSubject === subject ? null : subject)); // Toggle active subject
+  };
+
+  const years = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
 
   return (
     <div style={styles.container}>
@@ -31,8 +39,23 @@ const Kuppi: React.FC = () => {
             <h2 style={styles.departmentName}>{department.name}</h2>
             <ul style={styles.subjectList}>
               {department.subjects.map((subject, subIndex) => (
-                <li key={subIndex} style={styles.subject}>
+                <li
+                  key={subIndex}
+                  style={styles.subject}
+                  onClick={() => handleSubjectClick(subject)} // Handle subject click to show/hide years
+                >
                   {subject}
+
+                  {/* Display years only if this subject is clicked */}
+                  {activeSubject === subject && (
+                    <ul style={styles.yearList}>
+                      {years.map((year, yearIndex) => (
+                        <li key={yearIndex} style={styles.year}>
+                          {year}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ul>
@@ -45,9 +68,10 @@ const Kuppi: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    padding: '20px',
     backgroundColor: '#f5f5f5',
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: 'poppins',
+    padding: '40px',
+    paddingTop: '165px', // Space below navbar
   },
   heading: {
     textAlign: 'center',
@@ -67,25 +91,39 @@ const styles: { [key: string]: React.CSSProperties } = {
     margin: '10px',
     padding: '20px',
     width: '300px',
+    textAlign: 'center',
+    flexShrink: 0, // Ensure department boxes don't shrink
+    minHeight: '200px', // Ensure enough height for content
   },
   departmentName: {
-    fontSize: '24px',
+    fontSize: '20px',
     marginBottom: '10px',
     color: '#0056b3',
-    textAlign: 'center',
   },
   subjectList: {
     listStyleType: 'none',
     paddingLeft: 0,
+    maxHeight: '200px', // Adjust for scrollable list if there are too many subjects
+    overflowY: 'auto', // Enable scrolling
   },
   subject: {
     backgroundColor: '#f0f0f0',
     margin: '5px 0',
     padding: '10px',
     borderRadius: '4px',
-    textAlign: 'center',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  },
+  yearList: {
+    listStyleType: 'none',
+    paddingLeft: '20px',
+    marginTop: '10px',
+    backgroundColor: '#f8f8f8',
+    borderRadius: '4px',
+  },
+  year: {
+    padding: '5px',
   },
 };
 
 export default Kuppi;
-
