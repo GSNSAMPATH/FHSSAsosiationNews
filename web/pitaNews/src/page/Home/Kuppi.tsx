@@ -3,6 +3,9 @@ import Navbar from '../../routs/Navebar';
 
 const Kuppi: React.FC = () => {
   const [activeSubject, setActiveSubject] = useState<string | null>(null);
+  const [hoveredSubject, setHoveredSubject] = useState<string | null>(null);
+  const [hoveredYear, setHoveredYear] = useState<number | null>(null);
+  const [activeYear, setActiveYear] = useState<number | null>(null); // Track active year
 
   const departments = [
     { name: 'Department of Anthropology', subjects: ['Anthropology'] },
@@ -23,44 +26,85 @@ const Kuppi: React.FC = () => {
     { name: 'Department of Sociology', subjects: ['Sociology'] }
   ];
 
+  const years = ['1st Year', '2nd Year', '3rd Year', '4th Year']; // Define years array
+
   const handleSubjectClick = (subject: string) => {
     setActiveSubject((prevSubject) => (prevSubject === subject ? null : subject)); // Toggle active subject
   };
 
-  const years = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+  const handleYearClick = (yearIndex: number) => {
+    setActiveYear((prevYear) => (prevYear === yearIndex ? null : yearIndex)); // Toggle active year
+  };
+
+  const semesters = ['1st Semester', '2nd Semester'];
 
   return (
     <div style={styles.container}>
       <Navbar />
-      <h1 style={styles.heading}>Kuppi Page</h1>
-      <div style={styles.departmentList}>
-        {departments.map((department, index) => (
-          <div key={index} style={styles.department}>
-            <h2 style={styles.departmentName}>{department.name}</h2>
-            <ul style={styles.subjectList}>
-              {department.subjects.map((subject, subIndex) => (
-                <li
-                  key={subIndex}
-                  style={styles.subject}
-                  onClick={() => handleSubjectClick(subject)} // Handle subject click to show/hide years
-                >
-                  {subject}
+      <h1 style={styles.heading}>Kuppi Time Table</h1>
+      <div style={styles.departmentListContainer}>
+        {departments.map((department, index) => {
+          const [showMore, setShowMore] = useState(false); // Manage show more state per department
 
-                  {/* Display years only if this subject is clicked */}
-                  {activeSubject === subject && (
-                    <ul style={styles.yearList}>
-                      {years.map((year, yearIndex) => (
-                        <li key={yearIndex} style={styles.year}>
-                          {year}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          return (
+            <div key={index} style={styles.departmentContainer}>
+              <h2 style={styles.departmentName}>{department.name}</h2>
+              <ul style={styles.subjectList}>
+                {department.subjects.slice(0, showMore ? department.subjects.length : 2).map((subject, subIndex) => (
+                  <li key={subIndex} style={styles.subject}>
+                    <h3
+                      onClick={() => handleSubjectClick(subject)} // Handle subject click to show/hide years
+                      onMouseEnter={() => setHoveredSubject(subject)}
+                      onMouseLeave={() => setHoveredSubject(null)}
+                      style={{
+                        ...styles.subjectName,
+                        color: hoveredSubject === subject ? '#ff5722' : '#0056b3', // Change color on hover
+                      }}
+                    >
+                      {subject}
+                    </h3>
+
+                    {/* Display years only if this subject is clicked */}
+                    {activeSubject === subject && (
+                      <ul style={styles.yearList}>
+                        {years.map((year, yearIndex) => (
+                          <li
+                            key={yearIndex}
+                            onMouseEnter={() => setHoveredYear(yearIndex)}
+                            onMouseLeave={() => setHoveredYear(null)}
+                            onClick={() => handleYearClick(yearIndex)} // Handle year click
+                            style={{
+                              ...styles.year,
+                              backgroundColor: hoveredYear === yearIndex ? '#d9edf7' : 'transparent', // Change background on hover
+                            }}
+                          >
+                            {year}
+                            {/* Display semesters only if this year is clicked */}
+                            {activeYear === yearIndex && (
+                              <ul style={styles.semesterList}>
+                                {semesters.map((semester, semesterIndex) => (
+                                  <li key={semesterIndex} style={styles.semester}>
+                                    {semester}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+                {/* Show More / Show Less Button */}
+                {department.subjects.length > 2 && (
+                  <button onClick={() => setShowMore(!showMore)} style={styles.showMoreButton}>
+                    {showMore ? 'Show Less' : 'Show More'}
+                  </button>
+                )}
+              </ul>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -68,7 +112,7 @@ const Kuppi: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#e8f0fe', // Light background color
     fontFamily: 'poppins',
     padding: '40px',
     paddingTop: '165px', // Space below navbar
@@ -76,53 +120,76 @@ const styles: { [key: string]: React.CSSProperties } = {
   heading: {
     textAlign: 'center',
     marginBottom: '20px',
-    fontSize: '32px',
-    color: '#333',
+    fontSize: '36px',
+    color: '#003366', // Dark blue for heading
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
   },
-  departmentList: {
+  departmentListContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    flexDirection: 'column', // Vertical alignment for departments
+    alignItems: 'flex-start', // Align to the left
+    paddingLeft: '20px', // Add some left padding
   },
-  department: {
-    backgroundColor: '#fff',
+  departmentContainer: {
+    margin: '15px 0',
+    backgroundColor: '#ffffff', // White background for department containers
     borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    margin: '10px',
-    padding: '20px',
-    width: '300px',
-    textAlign: 'center',
-    flexShrink: 0, // Ensure department boxes don't shrink
-    minHeight: '200px', // Ensure enough height for content
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+    padding: '15px',
+    width: '100%', // Full width for departments
   },
   departmentName: {
-    fontSize: '20px',
-    marginBottom: '10px',
+    fontSize: '26px',
     color: '#0056b3',
+    borderBottom: '2px solid #0056b3', // Underline effect
+    paddingBottom: '5px',
   },
   subjectList: {
     listStyleType: 'none',
-    paddingLeft: 0,
-    maxHeight: '200px', // Adjust for scrollable list if there are too many subjects
-    overflowY: 'auto', // Enable scrolling
+    flexDirection: 'column',
+    alignItems: 'flex-start', // Align to the left
+    paddingLeft: '20px', // Indentation for subject list
   },
   subject: {
-    backgroundColor: '#f0f0f0',
-    margin: '5px 0',
-    padding: '10px',
-    borderRadius: '4px',
+    margin: '10px 0',
+  },
+  subjectName: {
+    fontSize: '20px',
     cursor: 'pointer',
-    transition: 'background-color 0.3s',
+    transition: 'color 0.3s',
   },
   yearList: {
+    listStyleType: 'none',
+    paddingLeft: '20px',
+    marginTop: '10px',
+    backgroundColor: '#f1f1f1',
+    borderRadius: '4px',
+  },
+  year: {
+    padding: '8px',
+    fontSize: '16px',
+    transition: 'background-color 0.3s',
+  },
+  semesterList: {
     listStyleType: 'none',
     paddingLeft: '20px',
     marginTop: '10px',
     backgroundColor: '#f8f8f8',
     borderRadius: '4px',
   },
-  year: {
+  semester: {
     padding: '5px',
+    fontSize: '14px',
+  },
+  showMoreButton: {
+    marginTop: '10px',
+    backgroundColor: '#0056b3',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '10px 15px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
   },
 };
 
