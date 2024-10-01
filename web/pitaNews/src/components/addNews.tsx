@@ -35,6 +35,7 @@ const AddNews = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(e)
 
     const uploadResult = await uploadImageToCloudinary();
     if (!uploadResult) {

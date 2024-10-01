@@ -73,6 +73,7 @@ const AddPost = () => {
         setTitle("");
         setContent("");    
         setImage(null);
+      
    
         
       } else {

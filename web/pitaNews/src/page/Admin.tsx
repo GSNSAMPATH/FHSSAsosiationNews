@@ -8,9 +8,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../Authotication/firebase';
 import { User, useUser } from '../components/UserContext';
 import AllData from '../components/allData';
+import Kuppi from '../components/kuppi';
+
+
+type PageType = 'Addpost' | 'Addnews' | 'allData' | 'Aprofile' | 'kuppi';
 
 const Admin: React.FC = () => {
-  const [page, setPage] = useState<'Addpost' | 'Addnews' | 'Aprofile' | 'allData'>('Addpost');
+  const [page, setPage] = useState<PageType>('Addpost');
   const { user } = useUser();
 
   const navigate = useNavigate();
@@ -25,7 +29,7 @@ const Admin: React.FC = () => {
 
   console.log(user);
 
-  const handlePageChange = (newPage: 'Addpost' | 'Addnews' | 'allData' | 'Aprofile') => {
+  const handlePageChange = (newPage: 'Addpost' | 'Addnews' | 'allData' | 'Aprofile' | 'kuppi') => {
     setPage(newPage);
   };
 
@@ -75,14 +79,22 @@ const Admin: React.FC = () => {
                 >
                   Add Post
                 </a>
+                <a
+                  href='#'
+                  onClick={() => handlePageChange('kuppi')}
+                  className={page === 'kuppi' ? 'active' : ''}
+                >
+                  Kuppi
+                </a>
                      </div> 
             
             </div></div>
             <div className='admin-content2'>
                 <div className='content2-content'>
                     {page === 'Addpost' && <AddPost />}
-                    {page === 'Addnews' && <AddNews />}
+                    {page === 'Addnews' && <AddNews />} 
                     {page === 'allData' && <AllData />}
+                    {page === 'kuppi' && <Kuppi />}
                     
                 </div>
         </div>
