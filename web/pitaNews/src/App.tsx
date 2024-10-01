@@ -1,114 +1,69 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+// import React, { useState, useEffect } from 'react';
+// import './App.css';
 
-const AddNews = () => {
-  const [title, setTitle] = useState<string>('');
-  const [content, setContent] = useState<string>('');
-  const [image, setImage] = useState<File | null>(null);
-  const [message, setMessage] = useState<string>('');
+// interface TimeTableEntry {
+//   subject: string;
+//   startTime: string;
+//   endTime: string;
+//   date: string;
+// }
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-  };
+// const Timetable: React.FC = () => {
+//   const [timetable, setTimetable] = useState<TimeTableEntry[]>([]);
 
-  const uploadImageToCloudinary = async (): Promise<{ imageUrl: string; publicId: string } | null> => {
-    if (!image) return null;
+//   // Simulate fetch data from API
+//   const fetchTimetableData = async () => {
+//     // Replace with actual API call
+//     const data = [
+//       { subject: 'Math', startTime: '09:00', endTime: '10:00', date: '2024-09-25' },
+//       { subject: 'Science', startTime: '10:30', endTime: '11:30', date: '2024-09-25' },
+//       { subject: 'History', startTime: '12:00', endTime: '13:00', date: '2024-09-26' },
+//     ];
+//     setTimetable(data);
+//   };
 
-    const formData = new FormData();
-    formData.append('file', image);
-    formData.append('upload_preset', 'pita_news');
-    formData.append('cloud_name', 'dgm9hbcb1');
+//   useEffect(() => {
+//     fetchTimetableData();
+//   }, []);
 
-    try {
-      const response = await axios.post('https://api.cloudinary.com/v1_1/dgm9hbcb1/image/upload', formData);
-      const { secure_url, public_id } = response.data;
-      return { imageUrl: secure_url, publicId: public_id };
-    } catch (error) {
-      console.error('Error uploading image to Cloudinary:', error);
-      return null;
-    }
-  };
+//   return (
+//     <div>
+//       <h1>Automatic Timetable</h1>
+//       <table>
+//         <thead>
+//           <tr>
+//             <th>Date</th>
+//             <th>Subject</th>
+//             <th>Start Time</th>
+//             <th>End Time</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {timetable.map((entry, index) => (
+//             <tr key={index}>
+//               <td>{entry.date}</td>
+//               <td>{entry.subject}</td>
+//               <td>{entry.startTime}</td>
+//               <td>{entry.endTime}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+// export default Timetable;
 
-    const uploadResult = await uploadImageToCloudinary();
-    if (!uploadResult) {
-      setMessage('Image upload failed.');
-      return;
-    }
+import React from 'react';
+import YouTubePlayer from '../src/components/Youtube';
 
-    const { imageUrl, publicId } = uploadResult;
-
-    const newsData = {
-      title,
-      content,
-      imageUrl,
-      cloudinaryPublicId: publicId,
-    };
-
-    try {
-      const response = await axios.post('http://localhost:3000/api/news/addNews', newsData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.status === 201) {
-        alert('post added successfully!');
-    
-        setTitle("");
-        setContent("");    
-        setImage(null);
-        
-      } else {
-        setMessage('Failed to add news.');
-      }
-    } catch (error) {
-      console.error('Error adding news:', error);
-      setMessage('An error occurred while adding the news.');
-    }
-  };
-
+const App: React.FC = () => {
   return (
-
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', alignContent: 'center',backgroundColor: 'rgba(107, 100, 104, 0.38)', padding: '20px' }}>
-      <h1 style={{ textAlign: 'center' }}>Add News</h1>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ marginBottom: '10px', width: '400px',justifyItems: 'center' }}>
-          <label style={{ marginBottom: '10px'}}>Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            style={{ width: '400px', marginBottom: '10px' }}
-          />
-        </div>
-        <div style={{ marginBottom: '10px', width: '400px'}}>
-          <label>Content:</label>
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-            style={{ width: '400px', marginBottom: '10px', height: '100px' }}
-          />
-        </div>
-        <div>
-          <label>Image:</label>
-          <input type="file" accept="image/*" onChange={handleFileChange} style={{ marginBottom: '10px' }} />
-          {image && <img src={URL.createObjectURL(image)} alt="Uploaded image" width="300" style={{ marginBottom: '10px' }} />}
-        </div>
-        <button type="submit" style={{ width: '300px' }} onClick={handleSubmit}>
-          Submit
-        </button>
-      </form>
-      {message && <p style={{ textAlign: 'center' }}>{message}</p>}
+    <div className="App">
+      <YouTubePlayer />
     </div>
-
   );
 };
 
-export default AddNews;
+export default App;
