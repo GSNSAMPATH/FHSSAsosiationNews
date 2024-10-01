@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import connectDB from './config/db';
 
-import { startCron } from './utils/node-cron';
+// import { startCron } from './utils/node-cron';
 import newsRoutes from './routes/newsRoutes';
 import postRoutes from './routes/postRoutes';
 import userRoutes from './routes/userRoutes';
@@ -27,7 +27,7 @@ app.use('/api/news', newsRoutes);
 app.use('/api/posts',postRoutes);
 app.use('/api/kuppi',kuppiRoutes);
 
-startCron();
+// startCron();
 
 
 app.listen(PORT, () => {

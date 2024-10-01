@@ -57,6 +57,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
+    <div className="navbar-container">
     <nav className="navbar">
       <div className="navebarhed">
         <div style={{ width: '10%' }}>
@@ -158,6 +159,7 @@ const Navbar: React.FC = () => {
         throw new Error('Function not implemented.');
       } } />
     </nav>
+    </div>
   );
 };
 
